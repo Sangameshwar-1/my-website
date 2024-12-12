@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        :root {
+            --bg-color: #f5f0f5;
+            --text-color: #0c0101;
+        }
+        .dark-mode {
+            --bg-color: #0e0101;
+            --text-color: #f5f0f5;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            overflow: -moz-hidden-unscrollable; /* Allow scrolling */
+            scrollbar-width: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 120vh;
+        }
+        .header {
+            display: flex;
+            justify-content: flex-end;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--bg-color);
+        }
+        #mode-toggle {
+            background-color: var(--text-color);
+            color: var(--bg-color);
+            border: none;
+            border-radius: 7px;
+            padding: 7px 10px;
+            cursor: pointer;
+        }
+        .main {
+            font-size: 25px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .main img {
+            width: 240px;
+            height: auto;
+        }
+        .login-container {
+            background-color: #f5f0f5;
+            padding: 20px;
+            border-radius: 13px;
+            flex-direction: column;
+            box-shadow: 0 4px 8px var(--text-color);
+            width: 320px;
+            transition: background-color 0.3s, color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        .login-container h1 {
+            text-align: center;
+            color: #e62e2e;
+        }
+        .login-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            color: #313030;
+        }
+        .login-container input {
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .login-container button {
+            padding: 10px;
+            width: 100%;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .login-container button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button id="mode-toggle" style="border-radius: 7px;">Toggle Dark Mode</button>
+    </div>
+    <div class="main">
+        <img src="https://intranet.iiit.ac.in/offices/static/images/iiit-new.png" alt="Logo">
+        <h1>Welcome to IIIT</h1>
+    </div>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form onsubmit="return validate()">
+            <label for="username">Username</label>
+            <input type="text" id="username" style="width: 270px; border-radius:7px" placeholder="Enter your username">
+            <div id="usernameError" class="error"></div>
+            <label for="password">Password</label>
+            <input type="password" id="password" style="width:270px ;border-radius:7px" placeholder="Enter your password">
+            <div id="passwordError" class="error"></div>
+            <button type="submit" formaction="Home_page.html">Login</button>
+        </form>
+        <p>Don't have an account?</p>
+        <form onsubmit="return create(event)">
+            <label for="newUsername">New Username</label>
+            <input type="text" id="newUsername" style="width: 270px; border-radius:7px" placeholder="Enter your new username">
+            <label for="newPassword">New Password</label>
+            <div id="newpass" >
+                <input type="password" id="newPassword" style="width: 270px; border-radius:7px" placeholder="Enter your new password">
+                
+            </div>
+            <button type="submit">Create Account</button>
+        </form>
+    </div>
+    <script>
+        var userCredentials = JSON.parse(localStorage.getItem('userCredentials')) || {
+            "sangam": "1234",
+            "pandari": "9908"
+        };
+
+        function saveUserCredentials() {
+            localStorage.setItem('userCredentials', JSON.stringify(userCredentials));
+        }
+
+        function create(event) {
+            event.preventDefault(); // Prevent form submission
+            const username = document.getElementById("newUsername").value.trim();
+            const password = document.getElementById("newPassword").value.trim();
+            if (!username || !password) {
+                alert("Please enter valid username and password.");
+                return false;
+            }
+            if (userCredentials[username]) {
+                alert("User already exists. Please try with a different username.");
+                return false;
+            }
+            userCredentials[username] = password;
+            saveUserCredentials();
+            alert("User created successfully. Please login to continue.");
+            return true;
+        }
+
+        function validate() {
+            let isValid = true;
+            const username = document.getElementById("username").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            if (!username) {
+                document.getElementById("usernameError").innerText = "Username is required.";
+                isValid = false;
+            } else {
+                document.getElementById("usernameError").innerText = "";
+            }
+
+            if (!password) {
+                document.getElementById("passwordError").innerText = "Password is required.";
+                isValid = false;
+            } else {
+                document.getElementById("passwordError").innerText = "";
+            }
+
+            if (isValid && (!userCredentials[username] || userCredentials[username] !== password)) {
+                alert("Invalid username or password. Please try again.");
+                return false;
+            }
+
+            return isValid;
+        }
+
+        const modeToggle = document.getElementById("mode-toggle");
+        modeToggle.addEventListener("click", function () {
+            document.body.classList.toggle("dark-mode");
+        });
+    </script>
+</body>
+</html>

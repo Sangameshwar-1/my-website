@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Home page</title>
+    <!-- <script>
+        // Prevent back navigation
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function () {
+            window.history.pushState(null, "", window.location.href);
+            alert("You cannot go back to the previous page.");
+        };
+    </script> -->
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 7px;
+            background-color: #f8f7fa;
+        }
+        #marquee {
+            font-weight: bold;
+            font-family: Arial, sans-serif;
+            background-color: #c2fa51;
+            color: #031015;
+        }
+        .nav {
+            background-color: #243238;
+            padding: 5px;
+        }
+        .nav li {
+            list-style: none;
+            display: inline-block;
+            padding: 8px;
+        }
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .nav li a:hover {
+            color: #7fffd4;
+        }
+        #appli {
+            font-size: 20px;
+            text-align: center; 
+            width: 50%;
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+       
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .footer a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div style="display: flex; align-items: center;">
+            <img src="https://intranet.iiit.ac.in/offices/static/images/iiit-new.png" alt="logo" style="width: 200px; height: 100px; margin-right: 15px;">
+            <div>
+                <h1 style="margin: 0; font-size: 24px;">International Institute of</h1>
+                <h1 style="margin: 0; font-size: 24px;">Technology</h1>
+                <h1 style="margin: 0; font-size: 24px;">Hyderabad</h1>
+            </div>
+        </div>
+    </div>
+    <div id="marquee"><marquee><b><i>Login successful</i></b></marquee></div>
+
+    <div class="nav">
+        <li><a href="file:///C:/Users/SANGAMESHWAR/OneDrive%20-%20International%20Institute%20of%20Information%20Technology/Desktop/vs/WEB/1/Home.html#">HOME</a></li>
+        <!-- <li><a href="#">MENU</a></li> -->
+        <li><a href="C:/Users/SANGAMESHWAR/OneDrive%20-%20International%20Institute%20of%20Information%20Technology/Desktop/vs/WEB/1/about.html#">ABOUT</a></li>
+        <li><a href="C:/Users/SANGAMESHWAR/OneDrive%20-%20International%20Institute%20of%20Information%20Technology/Desktop/vs/WEB/1/contact.html#">CONTACT</a></li>
+        <li style="float: right;"><a href=""><a href="C:/Users/SANGAMESHWAR/OneDrive%20-%20International%20Institute%20of%20Information%20Technology/Desktop/vs/WEB/1/login.html#">LOGIN-OUT</a></li>
+    </div>
+
+    <!-- Application Form -->
+    <h1 style="text-align: center; background-color: #7fffd4 ; border:2px ;"><b>Application for BTECH Admission</b></h1>
+    <form  onsubmit="return submm()">
+        <table id="appli">
+            <thead>
+                <tr>
+                    <th colspan="2"><b>Personal Details</b></th>
+                </tr>
+            <tbody>
+                <tr>
+                    <td>First Name:</td>
+                    <td><input type="text" name="fname" id="fname" placeholder="Enter your first name"  ></td>
+                </tr>
+                <tr>
+                    <td>Last Name:</td>
+                    <td><input type="text" name="lname" id="lname" placeholder="Enter your last name"  ></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" name="email" id="email" placeholder="example@example.com"  ></td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><input type="tel" name="phone" id="phone" placeholder="Enter your phone number"  ></td>
+                </tr>
+            </tbody>
+        </table>
+        <table id="appli">
+            <thead>
+                <tr>
+                    <th colspan="2"><b>Address Details</b></th>
+                </tr>
+            <tbody>
+                <tr>
+                    <td>Address:</td>
+                    <td><input type="text" name="Address" id="Address" placeholder="Address"  ></td>
+                </tr>
+                <tr>
+                    <td>Mandal :</td>
+                    <td><input type="text" name="mandal" id="mandal" placeholder="mandal"  ></td>
+                </tr>
+                <tr>
+                    <td>Ditrict:</td>
+                    <td><input type="text" name="district" id="district" placeholder="District"  ></td>
+                </tr>
+                <tr>
+                    <td>State :</td>
+                    <td><input type="text" name="state" id="state" placeholder="State"  ></td>
+                </tr>
+                <tr>
+                    <td>Pincode:</td>
+                    <td><input type="number" name="pincode" id="pincode" placeholder="Pincode"  ></td>
+            
+            </tbody>
+        </table>
+        <table id="appli">
+            <thead>
+                <tr>
+                    <th colspan="2"><b>Documents</b></th>
+                </tr>
+            <tbody>
+                <tr>
+                    <td>Nationality :</td>
+                    <td><input type="text" list="nationality" placeholder="Select"  >
+                    <datalist id="nationality">
+                        <option value="Indian">
+                        <option value="Others">
+                    </datalist></td>
+                <tr>
+                    <td>Aadhar :</td>
+                    <td><input type="file" name="faadhar" id="faadhar" placeholder="Address"  ></td>
+                </tr>
+                <tr>
+                    <td>Income :</td>
+                    <td><input type="file" name="fincome" id="fincome" placeholder="mandal"  ></td>
+                </tr>
+                <tr>
+                    <td></td>
+            
+                <tr>
+                    <td>
+                        <span id="prit"></span>
+                        <button type="submit" id="subm" style="background-color: rgb(32, 76, 237) ;border: none ;border-radius:7px ; color: #f8f7fa; font-size:medium; margin-top: 30px;margin-bottom: 50px; margin-left: 290px;" ><b>Save</b></button>
+                        
+                    </td>
+                </tr>    
+            
+            </tbody>
+            
+        </table>
+        <button href="C:\Users\SANGAMESHWAR\OneDrive - International Institute of Information Technology\Desktop\vs\WEB\1\sub.html" style="align-items: center; text-align: center;background-color:blue;border: none ;border-radius:7px ; color: #f8f7fa; font-size:medium; margin-top: 30px;margin-bottom: 50px; margin-left: 290px;" ><b>Submit</b></button>
+        
+        
+    </form>
+
+    <script>
+        Handle form submission
+        document.getElementById("applicationForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Capture form data
+            const firstName = document.getElementById("fname").value;
+            const lastName = document.getElementById("lname").value;
+            const email = document.getElementById("email").value;
+            const phone = document.getElementById("phone").value;
+
+            // Log data to console (optional)
+            console.log(`Hi ${firstName} ${lastName} from ${email}, Phone: ${phone}`);
+
+            // You can handle form submission here (e.g., send the data to a server)
+            alert("Application submitted successfully!");
+        });
+        function submm(){
+            fname = document.getElementById("fname").value.trim();
+            lname  = document.getElementById("lname").value.trim();
+            email = document.getElementById("email").value.trim();
+            phone = document.getElementById("phone").value.trim();
+            Address = document.getElementById("Address").value.trim();
+            mandal= document.getElementById("mandal").value.trim();
+            pincode = document.getElementById("pincode").value.trim();
+            nationality = document.getElementById("nationality").value.trim();
+            document.getElementById("prit").innerText = fname;
+            document.getElementById("prit").innerText = lname;
+            document.getElementById("prit").innerText = email;
+            document.getElementById("prit").innerText = Address;
+            document.getElementById("prit").innerText = mandal;
+            document.getElementById("prit").innerText = pincode;
+            document.getElementById("prit").innerText = nationality;
+            return false ;
+
+        }
+    </script>
+
+    <footer>
+        <div class="footer">
+            <h2>Contact Us</h2>
+            <p>Phone: +91 4043 323</p>
+            <p>Email: <a href="mailto:iiit@iiit.ac.in">iiit@iiit.ac.in</a></p>
+            <p>&copy; <strong>IIIT-H</strong></p>
+        </div>
+    </footer>
+</body>
+</html>
