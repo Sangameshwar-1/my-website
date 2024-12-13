@@ -5,7 +5,7 @@ exports.handler = function(context, event, callback) {
 
   client.calls
     .create({
-      to: event.to,
+      to: +918247341184,
       from:'+12564148264',
       url: 'http://demo.twilio.com/docs/voice.xml', // TwiML for call instructions
     })
