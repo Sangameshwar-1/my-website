@@ -1,27 +1,18 @@
-const express = require('express');
 const twilio = require('twilio');
 
-const app = express();
-const port = process.env.PORT || 3000;
+exports.handler = function(context, event, callback) {
+  const client = new twilio('AC5b36278bf5318b209bdd73b1cb9db625', '9af106eab0742e00ece2dcf3b06b6f74');
 
-// Twilio credentials from environment variables
-const client = new twilio(
-  process.env.TWILIO_ACCOUNT_SID,
-  process.env.TWILIO_AUTH_TOKEN
-);
-
-// Route to make a call
-app.get('/make-call', (req, res) => {
-  client.calls.create({
-    to: '+1234567890',   // Replace with the recipient number
-    from: '+0987654321', // Replace with your Twilio number
-    url: 'http://demo.twilio.com/docs/voice.xml' // TwiML URL for call actions
-  })
-  .then(call => res.send('Call initiated!'))
-  .catch(err => res.status(500).send('Error: ' + err));
-});
-
-// Start server
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+  client.calls
+    .create({
+      to: event.to,
+      from:'+12564148264',
+      url: 'http://demo.twilio.com/docs/voice.xml', // TwiML for call instructions
+    })
+    .then((call) => {
+      callback(null, `Call initiated: ${call.sid}`);
+    })
+    .catch((error) => {
+      callback(error);
+    });
+};
