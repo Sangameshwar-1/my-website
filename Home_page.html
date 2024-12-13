@@ -184,7 +184,9 @@
             
         </table>
         <button href="sub.html" style="align-items: center; text-align: center;background-color:blue;border: none ;border-radius:7px ; color: #f8f7fa; font-size:medium; margin-top: 30px;margin-bottom: 50px; margin-left: 290px;" ><b>Submit</b></button>
-        
+         <h1>Twilio Call Example</h1>
+         <button onclick="makeCall()">Make Call</button>
+
         
     </form>
 
@@ -224,6 +226,23 @@
             return false ;
 
         }
+    </script>
+    <script>
+        async function makeCall() {
+      const response = await fetch('https://web-9927.twil.io/path_1', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: '+918247341184',  // Recipient's phone number
+        }),
+      });
+
+      const data = await response.json();
+      alert('Call initiated!');
+      console.log(data);
+    }
     </script>
 
     <footer>
