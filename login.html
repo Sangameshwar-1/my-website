@@ -107,14 +107,14 @@
     </div>
     <div class="login-container">
         <h1>Login</h1>
-        <form onsubmit="return validate()">
+        <form onsubmit="return validate()" action="Home.html">
             <label for="username">Username</label>
             <input type="text" id="username" style="width: 270px; border-radius:7px" placeholder="Enter your username">
             <div id="usernameError" class="error"></div>
             <label for="password">Password</label>
             <input type="password" id="password" style="width:270px ;border-radius:7px" placeholder="Enter your password">
             <div id="passwordError" class="error"></div>
-            <button type="submit" formaction="Home.html">Login</button>
+            <button type="submit">Login</button>
         </form>
         <p>Don't have an account?</p>
         <form onsubmit="return create(event)">
